@@ -25,8 +25,9 @@ else()
   message(FATAL_ERROR "Unsupported Host CPU: ${HOST_CPU}")
 endif()
 
-set(C_STANDARD_REQUIRED ON)
 set(CMAKE_C_STANDARD 23)
+set(CMAKE_C_STANDARD_REQUIRED ON)
+set(CMAKE_C_EXTENSIONS ON)
 
 project(EXP LANGUAGES C ASM VERSION 0.2.0 DESCRIPTION "A hobby programming language.")
 
@@ -72,5 +73,7 @@ set(EXP_CMAKE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
 include(CTest)
 include(${EXP_CMAKE_DIR}/deps.cmake)
 include(${EXP_CMAKE_DIR}/discoverTests.cmake)
+
+add_subdirectory(${EXP_TEST_DIR})
 
 
